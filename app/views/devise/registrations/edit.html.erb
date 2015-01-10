@@ -1,0 +1,54 @@
+<h2>Edit <%= resource_name.to_s.humanize %></h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <p><%= f.label "First Name" %><br />
+  <%= f.text_field :fname, autofocus: true %></p>
+
+  <p><%= f.label "Last Name" %><br />
+  <%= f.text_field :lname %></p>
+
+  <p><%= f.label "Username" %><br />
+  <%= f.text_field :username %></p>
+
+  <p><%= f.label :gender %><br />
+  <%= f.select(:gender, [["Select a Gender"],['Male'], ['Female'], ['Other']]) %></p>
+
+
+  <p><%= f.label :birthday %><br />
+  <%= f.date_select :birthday %></p>
+
+  <p><%= f.label "Hometown Zip Code" %><br />
+  <%= f.text_field :hometown_zip %></p>
+
+  <p><%= f.label :favorite_sport %><br />
+  <%= f.select(:favorite_sport, [["Select a Sport"],["Football (Soccer)"],["Cricket"],["Basketball"],["Baseball"],["American Football"],["Ice Hockey"],["Rugby"],["Volleyball"],["Tennis"],["Water Sports"],["Adventure Sports"],["Badminton"],["Motor Sports"],["Golf"],["Softball"],["Running"],["Table Tennis"],["Field Hockey"],["Cycling"],["Winter Sports"],["Gymnastics"],["Lacrosse"],["Boxing"],["Martial Arts"],["Other"]]) %></p>
+
+  <p><%= f.label :bio %><br />
+  <%= f.text_area :bio %></p>
+
+  <p><%= f.label :email %><br />
+  <%= f.email_field :email %></p>
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+  <% end %>
+
+  <p><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+    <%= f.password_field :password, autocomplete: "off" %></p>
+
+  <p><%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off" %></p>
+
+  <p><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+    <%= f.password_field :current_password, autocomplete: "off" %></p>
+
+  <p><%= f.submit "Update" %></p>
+<% end %>
+
+<h3>Cancel my account</h3>
+
+<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+
+<%= link_to "Back", :back %>

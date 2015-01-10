@@ -1,0 +1,43 @@
+<h2>Sign up</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <p><%= f.label "First Name" %><br />
+  <%= f.text_field :fname, autofocus: true %></p>
+
+  <p><%= f.label "Last Name" %><br />
+  <%= f.text_field :lname %></p>
+
+  <p><%= f.label "Username" %><br />
+  <%= f.text_field :username %></p>
+
+  <p><%= f.label :gender %><br />
+  <%= f.select(:gender, [["Select a Gender"],['Male'], ['Female'], ['Other']]) %></p>
+
+
+  <p><%= f.label :birthday %><br />
+  <%= f.date_select :birthday, :start_year => 1900 %></p>
+
+  <p><%= f.label "Hometown Zip Code" %><br />
+  <%= f.text_field :hometown_zip %></p>
+
+  <p><%= f.label :favorite_sport %><br />
+  <%= f.select(:favorite_sport, [["Select a Sport"],["Football (Soccer)"],["Cricket"],["Basketball"],["Baseball"],["American Football"],["Ice Hockey"],["Rugby"],["Volleyball"],["Tennis"],["Water Sports"],["Adventure Sports"],["Badminton"],["Motor Sports"],["Golf"],["Softball"],["Running"],["Table Tennis"],["Field Hockey"],["Cycling"],["Winter Sports"],["Gymnastics"],["Lacrosse"],["Boxing"],["Martial Arts"],["Other"]]) %></p>
+
+  <p><%= f.label :bio %><br />
+  <%= f.text_area :bio %></p>
+
+  <p><%= f.label :email %><br />
+  <%= f.email_field :email %></p>
+  
+  <p><%= f.label :password %> <% if @validatable %><i>(<%= @minimum_password_length %> characters minimum)</i><% end %><br />
+    <%= f.password_field :password, autocomplete: "off" %></p>
+
+  <p><%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off" %></p>
+
+  <p><%= f.submit "Sign up" %></p>
+<% end %>
+
+<%= render "devise/shared/links" %>
