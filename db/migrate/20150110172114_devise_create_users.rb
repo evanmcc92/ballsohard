@@ -24,7 +24,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string   :fname
       t.string   :lname
       t.integer   :points
-      t.integer   :hometown_zip
+      t.string   :hometown_zip
       t.string   :image_url
       t.string   :bio
       t.string   :favorite_sport

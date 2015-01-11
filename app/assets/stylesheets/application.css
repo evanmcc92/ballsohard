@@ -13,7 +13,14 @@
  *= require_tree .
  *= require_self
  */
-
+html {
+	font-family: "Helvetica", "Arial", san-serif;
+}
+#logo {
+	height: 150px;
+	width: !auto;
+	float: left;
+}
 header nav ul {
 	list-style-type: none;
 	text-align: right;
@@ -28,4 +35,12 @@ header {
 }
 header nav {
 	padding-top: 25px; 
+}
+.left {
+	float: left;
+	clear: both;
+	margin-right: 5%;
+	width: 15%;
+}
+.body {
 }

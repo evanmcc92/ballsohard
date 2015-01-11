@@ -10,4 +10,11 @@ class User < ActiveRecord::Base
   validates :hometown_zip, presence: true
   validates :favorite_sport, presence: true
   validates :username, presence: true
+
+  before_create :setpoints
+  
+  private
+    def setpoints
+      self.attributes = {points: 0}
+    end
 end

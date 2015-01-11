@@ -23,7 +23,7 @@
   <%= f.text_field :hometown_zip %></p>
 
   <p><%= f.label :favorite_sport %><br />
-  <%= f.select(:favorite_sport, [["Select a Sport"],["Football (Soccer)"],["Cricket"],["Basketball"],["Baseball"],["American Football"],["Ice Hockey"],["Rugby"],["Volleyball"],["Tennis"],["Water Sports"],["Adventure Sports"],["Badminton"],["Motor Sports"],["Golf"],["Softball"],["Running"],["Table Tennis"],["Field Hockey"],["Cycling"],["Winter Sports"],["Gymnastics"],["Lacrosse"],["Boxing"],["Martial Arts"],["Other"]]) %></p>
+  <%= f.collection_select :favorite_sport, Sports.all, :id, :name, {prompt: "Select a Sport"} %></p>
 
   <p><%= f.label :bio %><br />
   <%= f.text_area :bio %></p>
