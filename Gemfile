@@ -42,6 +42,10 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 
 gem 'devise'
+gem 'omniauth', '>= 0.2.6'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+
 gem 'newrelic_rpm'
 gem 'meta-tags'
 

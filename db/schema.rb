@@ -11,7 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150111173200) do
+ActiveRecord::Schema.define(version: 20150114020527) do
+
+  create_table "identities", force: true do |t|
+    t.integer  "user_id"
+    t.string   "provider"
+    t.string   "uid"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "identities", ["user_id"], name: "index_identities_on_user_id"
+
+  create_table "levels", force: true do |t|
+    t.integer  "points"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "sports", force: true do |t|
     t.string   "name"
@@ -36,7 +52,7 @@ ActiveRecord::Schema.define(version: 20150111173200) do
     t.string   "fname"
     t.string   "lname"
     t.integer  "points"
-    t.integer  "hometown_zip"
+    t.string   "hometown_zip"
     t.string   "image_url"
     t.string   "bio"
     t.string   "favorite_sport"

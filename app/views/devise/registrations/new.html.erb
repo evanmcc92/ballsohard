@@ -1,5 +1,6 @@
 <h2>Sign up</h2>
-
+<p><%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %></p>
+<p><%= link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter) %></p>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
@@ -20,7 +21,7 @@
   <%= f.date_select :birthday, :start_year => 1900 %></p>
 
   <p><%= f.label "Hometown Zip Code" %><br />
-  <%= f.text_field :hometown_zip %></p>
+  <%= f.number_field :hometown_zip %></p>
 
   <p><%= f.label :favorite_sport %><br />
   <%= f.collection_select :favorite_sport, Sports.all, :id, :name, {prompt: "Select a Sport"} %></p>

@@ -1,11 +1,12 @@
 <h2><%= @user.username %></h2>
 <div class="left">
+	<p>Level: <%= @level.id %></p>
 	<p>Name: <%= @user.fname %> <%= @user.lname %></p>
-	<p>Birthday: <%= @user.birthday.strftime("%m/%d/%Y") %></p>
+	<p>Age: <%= @age %></p>
 	<p>Hometown: <%= @user.hometown_zip %></p>
 	<p>Bio: <i><%= @user.bio %></i></p>
 	<p>Favorite Sport: <%= @sport %></p>
-	<p>Points: <%= @user.points %></p>
+	<p>Points: <%= @user.points %> of <%= @level.points %></p>
 </div>
 <div class="body">
 	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
