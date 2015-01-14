@@ -18,7 +18,7 @@ html {
 }
 #logo {
 	height: 150px;
-	width: !auto;
+	width: auto;
 	float: left;
 }
 header nav ul {
