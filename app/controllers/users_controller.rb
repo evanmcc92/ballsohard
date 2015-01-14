@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :finish_signup]
   def search
   end
 
@@ -13,7 +14,7 @@ class UsersController < ApplicationController
   	@title = "#{@user.username}'s Profile - "
   	@description = "#{@user.username}'s profile on BallSoHard. Bio: '#{@user.bio}'"
   end
-  
+
   def update
     # authorize! :update, @user
     respond_to do |format|
