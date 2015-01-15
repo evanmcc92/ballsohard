@@ -18,7 +18,7 @@ def ensure_signup_complete
   protected
 
     def configure_permitted_parameters
-		  devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:username, :fname, :lname, :gender, :birthday, :hometown_zip, :favorite_sport, :image_url, :bio, :password, :password_confirmation, :current_password, :email) }
+		  devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:username, :fname, :lname, :gender, :birthday, :hometown_zip, :favorite_sport, :image_url, :bio, :password, :password_confirmation, :email) }
       
     	devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :fname, :lname, :gender, :birthday, :hometown_zip, :favorite_sport, :image_url, :bio, :password, :password_confirmation, :email) }
     end

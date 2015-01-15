@@ -42,11 +42,31 @@ class User < ActiveRecord::Base
 
       # Create the user if it's a new registration
       if user.nil?
-        user = User.new(
-          username: auth.info.nickname || auth.uid,
-          email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
-          password: Devise.friendly_token[0,20]
-        )
+          if identity.provider == "twitter"
+            user = User.new(
+              fname: auth.extra.raw_info.name ? auth.extra.raw_info.name : auth.info.nickname,
+              lname: "",
+              favorite_sport: 3,
+              birthday: Time.now,
+              gender: "Other",
+              hometown_zip: "02108",
+              username: auth.info.nickname || auth.uid,
+              email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
+              password: Devise.friendly_token[0,20]
+            )
+          else
+            user = User.new(
+              fname: auth.extra.raw_info.first_name ? auth.extra.raw_info.first_name : "",
+              lname: auth.extra.raw_info.last_name ? auth.extra.raw_info.last_name : "",
+              favorite_sport: 3,
+              birthday: auth.extra.raw_info.birthday ? auth.extra.raw_info.birthday : Time.now,
+              gender: auth.extra.raw_info.gender ? auth.extra.raw_info.gender : "Other",
+              hometown_zip: "02108",
+              username: auth.info.username || auth.uid,
+              email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
+              password: Devise.friendly_token[0,20]
+            )
+          end
         user.skip_confirmation!
         user.save!
       end
