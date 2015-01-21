@@ -4,13 +4,13 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :confirmable, :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook, :twitter]
 
 
-  # validates :fname, presence: true
-  # validates :lname, presence: true
-  # validates :birthday, presence: true
-  # validates :gender, presence: true
-  # validates :hometown_zip, presence: true
-  # validates :favorite_sport, presence: true
-  # validates :username, presence: true
+  validates :fname, presence: true
+  validates :lname, presence: true
+  validates :birthday, presence: true
+  validates :gender, presence: true
+  validates :hometown_zip, presence: true
+  validates :favorite_sport, presence: true
+  validates :username, presence: true
 
   before_create :setpoints
 
@@ -45,21 +45,22 @@ class User < ActiveRecord::Base
           if identity.provider == "twitter"
             user = User.new(
               fname: auth.extra.raw_info.name ? auth.extra.raw_info.name : auth.info.nickname,
-              lname: "",
+              lname: " ",
               favorite_sport: 3,
               birthday: Time.now,
               gender: "Other",
               hometown_zip: "02108",
+              bio: auth.extra.raw_info.description ? auth.extra.raw_info.description : " ",
               username: auth.info.nickname || auth.uid,
               email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
               password: Devise.friendly_token[0,20]
             )
           else
             user = User.new(
-              fname: auth.extra.raw_info.first_name ? auth.extra.raw_info.first_name : "",
-              lname: auth.extra.raw_info.last_name ? auth.extra.raw_info.last_name : "",
+              fname: auth.extra.raw_info.first_name ? auth.extra.raw_info.first_name : " ",
+              lname: auth.extra.raw_info.last_name ? auth.extra.raw_info.last_name : " ",
               favorite_sport: 3,
-              birthday: auth.extra.raw_info.birthday ? auth.extra.raw_info.birthday : Time.now,
+              birthday: auth.extra.raw_info.user_birthday ? auth.extra.raw_info.user_birthday : Time.now,
               gender: auth.extra.raw_info.gender ? auth.extra.raw_info.gender : "Other",
               hometown_zip: "02108",
               username: auth.info.username || auth.uid,
