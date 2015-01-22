@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<title><%= @title %>BallSoHard</title>
 	<meta content="<%= @description %>Need an extra player or looking to play a local pick-up game? Sign up for BallSoHard and start playing today" name="description">
@@ -27,12 +27,19 @@
 	<meta name="twitter:title" content="<%= @title %>">
 	<meta name="twitter:description" content="<%= @description %> - Need an extra player or looking to play a local pick-up game? Sign up for BallSoHard and start playing today">
 	<meta name="twitter:image" content="<%= image_url 'logo.png' %>">
-	
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 </head>
 <body>
 
 	<%= render "shared/header" %>
-	<%= yield %>
+    <div class="container">
+	    <div class="row">
+			<%= yield %>
+	    </div>
+	    <div class="row">
+	    <div>&nbsp;</div>
+	    </div>
+    </div>
 
 </body>
 </html>

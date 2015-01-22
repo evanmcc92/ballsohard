@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   before_filter :configure_permitted_parameters, if: :devise_controller?
   helper :all
 
-def ensure_signup_complete
+  def ensure_signup_complete
     # Ensure we don't go into an infinite loop
     return if action_name == 'finish_signup'
 
@@ -18,7 +18,7 @@ def ensure_signup_complete
   protected
 
     def configure_permitted_parameters
-		  devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:username, :fname, :lname, :gender, :birthday, :hometown_zip, :favorite_sport, :image_url, :bio, :password, :password_confirmation, :email) }
+		  devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:username, :fname, :lname, :gender, :birthday, :hometown_zip, :favorite_sport, :image_url, :bio, :password, :password_confirmation, :email, :current_password) }
       
     	devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:username, :fname, :lname, :gender, :birthday, :hometown_zip, :favorite_sport, :image_url, :bio, :password, :password_confirmation, :email) }
     end

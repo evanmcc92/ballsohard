@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   root 'static#index'
-  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks", :registrations => "registrations" }
+  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks"}
   as :user do
     get 'users/:id/edit' => 'devise/registrations#edit', :as => "edit_user"
   end

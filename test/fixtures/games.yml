@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 
+  venue: MyString
+  address: MyString
+  city: MyString
+  state: MyString
+  zip: MyString
+  sport_id: 
+  notes: MyString
+  points: 1
+  public: false
+  playercount: 1
+  experience: MyString
+
+two:
+  user_id: 
+  venue: MyString
+  address: MyString
+  city: MyString
+  state: MyString
+  zip: MyString
+  sport_id: 
+  notes: MyString
+  points: 1
+  public: false
+  playercount: 1
+  experience: MyString
