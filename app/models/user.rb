@@ -42,8 +42,8 @@ class User < ActiveRecord::Base
 
       # Create the user if it's a new registration
       if user.nil?
+          @pass = Devise.friendly_token[0,20]
           if identity.provider == "twitter"
-            @pass = Devise.friendly_token[0,20]
 
             user = User.new(
               fname: auth.extra.raw_info.name ? auth.extra.raw_info.name : auth.info.nickname,
@@ -55,10 +55,9 @@ class User < ActiveRecord::Base
               bio: auth.extra.raw_info.description ? auth.extra.raw_info.description : " ",
               username: auth.info.nickname || auth.uid,
               email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
-              password: @pass
+              # password: @pass
             )
           else
-            @pass = Devise.friendly_token[0,20]           
             user = User.new(
               fname: auth.extra.raw_info.first_name ? auth.extra.raw_info.first_name : "-",
               lname: auth.extra.raw_info.last_name ? auth.extra.raw_info.last_name : "-",
