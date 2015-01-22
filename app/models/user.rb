@@ -54,7 +54,7 @@ class User < ActiveRecord::Base
               hometown_zip: "02108",
               bio: auth.extra.raw_info.description ? auth.extra.raw_info.description : " ",
               username: auth.info.nickname || auth.uid,
-              email: "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
+              email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
               password: @pass
             )
           else
@@ -66,7 +66,7 @@ class User < ActiveRecord::Base
               gender: auth.extra.raw_info.gender ? auth.extra.raw_info.gender : "Other",
               hometown_zip: "02108",
               username: auth.info.username || auth.uid,
-              email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
+              email: "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
               password: @pass
             )
           end
