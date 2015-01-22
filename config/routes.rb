@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     get 'users/:id/edit' => 'devise/registrations#edit', :as => "edit_user"
   end
   resources :users
+  resources :games
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
