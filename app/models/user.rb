@@ -54,8 +54,8 @@ class User < ActiveRecord::Base
               hometown_zip: "02108",
               bio: auth.extra.raw_info.description ? auth.extra.raw_info.description : " ",
               username: auth.info.nickname || auth.uid,
-              email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
-              # password: @pass
+              email: "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
+              password: @pass
             )
           else
             user = User.new(
