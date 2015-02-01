@@ -1,2 +1,29 @@
-<h1>Games#index</h1>
-<p>Find me in app/views/games/index.html.erb</p>
+<h1>All Game</h1>
+
+<% if !@games.blank? %>
+	<% @games.each do |game| %>
+	<div class="index-game" id="game-<%= game.id %>">
+		
+	</div>
+		<h4><%= Sports.find_by_id(game.sport_id).name %> Game</h4>
+		<p>
+			Game Day: <%= game.date.to_formatted_s(:long_ordinal) %><br>
+			Location:
+			<address><%= game.venue %><br><%= game.address %><br><%= game.city %> <%= game.state %>, <%= game.zip %> </address>
+		</p>
+		<p>
+			Looking for <%= game.playercount %> player(s)<br>
+			With a <%= game.experience.downcase %> experience level<br>
+			This game is worth <%= game.points %> points<br>
+			Additional Notes:
+			<small>
+				<blockquote>
+					<%= game.notes %>
+				</blockquote>
+			</small>
+		</p>
+		<hr>
+	<% end %>
+<% else %>
+	<p>There are no games in your area. <%= link_to "Create a new game here!", new_game_path %></p>
+<% end %>

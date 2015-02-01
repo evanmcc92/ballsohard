@@ -19,7 +19,7 @@
 <br>
 
   <p><%= f.label :gender %><br />
-  <%= f.select(:gender, [["Select a Gender"],['Male'], ['Female'], ['Other']],{}, class: "form-control") %></p>
+  <%= f.select(:gender, [['Male'], ['Female'], ['Other']],{prompt: "Select a Gender"}, class: "form-control") %></p>
 
   <div class="form-inline">
     <p><%= f.label :birthday %><br />

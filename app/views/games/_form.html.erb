@@ -1,0 +1,38 @@
+<%= form_for @game do |g| %>
+	<p><%= g.label :sport_id %><br>
+	<%= g.collection_select :sport_id, Sports.all, :id, :name, {prompt: "Select a Sport"}, class: "form-control" %></p>
+	
+	<div class="form-inline">
+		<p><%= g.label :date %><br />
+		<%= g.datetime_select :date, {:ampm => true, :minute_step => 15},class: "form-control" %></p>
+	</div>
+	
+	<p><%= g.label :venue %><br>
+	<%= g.text_field :venue, class: "form-control", autofocus: true %></p>
+
+	<p><%= g.label :address %><br>
+	<%= g.text_field :address, class: "form-control" %></p>
+
+	<p><%= g.label :city %><br>
+	<%= g.text_field :city, class: "form-control" %></p>
+
+	<p><%= g.label :state %><br>
+	<%= g.select(:state, options_for_select(us_states), {prompt: "Select a State"}, class: "form-control") %></p>
+
+	<p><%= g.label :zip %><br>
+	<%= g.number_field :zip, class: "form-control" %></p>
+
+	<!-- <p><%= g.label "Is this game available to the public?" %><br /> -->
+	<!-- <%= g.select(:public, [['Yes',0], ['No',1]], {prompt: "Is this game available to the public?"}, class: "form-control") %></p> -->
+
+	<p><%= g.label "Select Number of Players" %><br />
+	<%= g.select(:playercount, options_for_select((1..20).step(1).to_a.map{|s| ["#{s}", s]}), {prompt: "Select Number of Players"}, class: "form-control") %></p>
+	
+	<p><%= g.label "Select Experience Level" %><br />
+	<%= g.select(:experience, [['Beginner',1], ['Easy',2], ['Medium',3], ['Hard',4], ['Pros',5]], {prompt: "Select Experience Level"}, class: "form-control") %></p>
+
+	<p><%= g.label :notes %><br />
+	<%= g.text_area :notes, class: "form-control" %></p>
+
+	<p><%= g.submit "Submit Game", class: "btn btn-success" %></p>
+<% end %>
