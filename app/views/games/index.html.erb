@@ -1,29 +1,24 @@
-<h1>All Game</h1>
+<h1>Find a Game</h1>
 
 <% if !@games.blank? %>
+	<table class="table">
+		<tr>
+			<th>Sport</th>
+			<th>Date</th>
+			<th>Venue</th>
+			<th>Player Count</th>
+			<th>Experience Level</th>
+		</tr>
 	<% @games.each do |game| %>
-	<div class="index-game" id="game-<%= game.id %>">
-		
-	</div>
-		<h4><%= Sports.find_by_id(game.sport_id).name %> Game</h4>
-		<p>
-			Game Day: <%= game.date.to_formatted_s(:long_ordinal) %><br>
-			Location:
-			<address><%= game.venue %><br><%= game.address %><br><%= game.city %> <%= game.state %>, <%= game.zip %> </address>
-		</p>
-		<p>
-			Looking for <%= game.playercount %> player(s)<br>
-			With a <%= game.experience.downcase %> experience level<br>
-			This game is worth <%= game.points %> points<br>
-			Additional Notes:
-			<small>
-				<blockquote>
-					<%= game.notes %>
-				</blockquote>
-			</small>
-		</p>
-		<hr>
+		<tr id="game-<%= game.id %>">
+			<td><%= Sports.find_by_id(game.sport_id).name %> Game</td>
+			<td><%= link_to game.date.to_formatted_s(:long_ordinal), game_path(game.id) %></td>
+			<td><%= link_to "#{game.venue}", "http://maps.google.com/maps?saddr=My+Location&daddr=#{game.venue}+#{game.address}+#{game.city}+#{game.state}+#{game.zip}" %></td>
+			<td><%= game.playercount %></td>
+			<td><%= game.experience.downcase %> experience level</td>
+		</tr>
 	<% end %>
+	</table>
 <% else %>
 	<p>There are no games in your area. <%= link_to "Create a new game here!", new_game_path %></p>
 <% end %>

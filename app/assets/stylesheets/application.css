@@ -44,3 +44,7 @@ header nav {
 }
 .body {
 }
+#map-canvas {
+	width: 100%;
+	height: 50vh;
+}
