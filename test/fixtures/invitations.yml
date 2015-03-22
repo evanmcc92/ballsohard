@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  games: 
+  userto: 1
+  userfrom: 1
+  accepted: false
+
+two:
+  games: 
+  userto: 1
+  userfrom: 1
+  accepted: false
