@@ -73,30 +73,31 @@
 			With a <%= @game.experience.downcase %> experience level<br>
 			This game is worth <%= @game.points %> points<br>
 			Additional Notes:
-			<small>
-				<blockquote>
-					<%= @game.notes %>
-				</blockquote>
-			</small>
+			<% if @game.notes.present? %>
+				<small>
+					<blockquote>
+						<%= @game.notes %>
+					</blockquote>
+				</small>
+			<% end %>
 		</p>
+		<table class="table">
+			<tr>
+				<th>Current Roster</th>
+			</tr>
+			<% @players.attributes.each do |attr_name, attr_value| %>
+				<% unless @badattributes.include?(attr_name) %>
+					<% if attr_value %>
+						<tr>
+							<td><%= link_to "#{User.find_by(attr_value).username}", user_path(attr_value)%></td>
+						</tr>
+					<% end %>
+				<% end %>
+			<% end %>
+		</table>
 		<p><%= link_to "Get Directions", "http://maps.google.com/maps?saddr=My+Location&daddr=#{@game.venue}+#{@game.address}+#{@game.city}+#{@game.state}+#{@game.zip}" %></p>
 		<div id="map-canvas"  onload="initialize()"></div>
 	</div>
-	<h4>Players</h4>
-	<table>
-		<tr>
-			<th>User</th>
-		</tr>
-		<% @players.attributes.each do |attr_name, attr_value| %>
-			<% unless @badattributes.include?(attr_name) %>
-				<% if attr_value %>
-					<tr>
-						<td><%= link_to "#{User.find_by(attr_value).username}", user_path(attr_value)%></td>
-					</tr>
-				<% end %>
-			<% end %>
-		<% end %>
-	</table>
 	<% if current_user.id == @game.user_id %>
 		<p><%= button_to "Delete this Game", game_path(@game.id), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger"  %></p>
 	<% end %>

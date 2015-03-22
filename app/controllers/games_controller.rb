@@ -41,6 +41,12 @@ class GamesController < ApplicationController
   def update
   end
 
+  def destroy
+    @games = Game.find(params[:id])
+    @games.destroy
+    redirect_to root_url
+  end
+
   private
     def game_params
       params.require(:game).permit(:venue, :city, :state, :zip, :address, :experience, :sport_id, :notes, :public, :playercount, :date, :points)
