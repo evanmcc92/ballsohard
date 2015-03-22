@@ -5,13 +5,13 @@ class Game < ActiveRecord::Base
   has_many :players
 
   validates :venue, presence: true
-  after_create :create_feed
+  after_create :create_players
 
   private
 
   def create_players
-    Player.create(
-      game_id: self,
+    Players.create(
+      games_id: self.id,
       user1: self.user_id
     )
   end
