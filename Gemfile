@@ -5,8 +5,8 @@ source 'https://rubygems.org'
 gem 'rails', '4.1.1'
 # Use sqlite3 as the database for Active Record
 
+gem 'mysql2', '~> 0.3.21'
 group :development do
-  gem 'mysql2'
 end
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
@@ -56,8 +56,7 @@ gem 'meta-tags'
 gem 'geocoder'
 gem 'will_paginate', '~> 3.0.6'
 
-group :production do
-  # gem "pg"
-  gem 'mysql2'
-  gem 'rails_12factor', '0.0.2'
-end
+# group :production do
+#   gem "pg"
+#   gem 'rails_12factor', '0.0.2'
+# end
