@@ -6,7 +6,7 @@ gem 'rails', '4.1.1'
 # Use sqlite3 as the database for Active Record
 
 group :development do
-  gem 'sqlite3', '1.3.8'
+  gem 'mysql2'
 end
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
@@ -57,6 +57,7 @@ gem 'geocoder'
 gem 'will_paginate', '~> 3.0.6'
 
 group :production do
-  gem "pg"
+  # gem "pg"
+  gem 'mysql2'
   gem 'rails_12factor', '0.0.2'
 end
