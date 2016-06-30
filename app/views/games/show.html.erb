@@ -60,7 +60,8 @@
 			<span class="sr-only"><%= number_to_percentage((@user.points.to_f / @level.points.to_f) * 100) %> Complete</span>
 		</div>
 	</div>
-	<p>Favorite Sport: <%= Sports.find_by_id(@user.favorite_sport).name %></p>
+	<p>Favorite Sport: <%= Sports.find_by_id(@user.favorite_sport).name %>
+	</p>
 </div>
 <div class="col-sm-9">
 	<div class="index-game" id="game-<%= @game.id %>">

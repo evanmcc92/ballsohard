@@ -31,8 +31,8 @@ ActiveRecord::Schema.define(version: 20150322154618) do
     t.datetime "date"
   end
 
-  add_index "games", ["sport_id"], name: "index_games_on_sport_id"
-  add_index "games", ["user_id"], name: "index_games_on_user_id"
+  add_index "games", ["sport_id"], name: "index_games_on_sport_id", using: :btree
+  add_index "games", ["user_id"], name: "index_games_on_user_id", using: :btree
 
   create_table "identities", force: true do |t|
     t.integer  "user_id"
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 20150322154618) do
     t.datetime "updated_at"
   end
 
-  add_index "identities", ["user_id"], name: "index_identities_on_user_id"
+  add_index "identities", ["user_id"], name: "index_identities_on_user_id", using: :btree
 
   create_table "invitations", force: true do |t|
     t.integer  "games_id"
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 20150322154618) do
   end
 
   create_table "levels", force: true do |t|
-    t.integer  "points"
+    t.integer  "points",     limit: 8
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(version: 20150322154618) do
     t.datetime "updated_at"
   end
 
-  add_index "players", ["games_id"], name: "index_players_on_games_id"
+  add_index "players", ["games_id"], name: "index_players_on_games_id", using: :btree
 
   create_table "sports", force: true do |t|
     t.string   "name"
@@ -125,7 +125,7 @@ ActiveRecord::Schema.define(version: 20150322154618) do
     t.datetime "locked_at"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end

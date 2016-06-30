@@ -12,7 +12,7 @@ default: &default
   pool: 5
   username: bfff744828b3af
   password: 49ece5a7
-  host: us-cdbr-east.cleardb.com
+  host: us-cdbr-iron-east-04.cleardb.net
 
 development:
   <<: *default
