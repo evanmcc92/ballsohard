@@ -54,7 +54,7 @@ gem 'newrelic_rpm'
 gem 'meta-tags'
 
 gem 'geocoder'
-gem 'will_paginate', '~> 3.0.6'
+gem 'will_paginate', '~> 3.3.0'
 
 # group :production do
 #   gem "pg"
